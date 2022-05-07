@@ -1,23 +1,24 @@
-const createProduct = async (req, res) => {
-  res.send('create product');
-};
-const getAllProducts = async (req, res) => {
-  res.send(' get all products');
-};
-const updateProduct = async (req, res) => {
-  res.send(' update product');
-};
-const deleteProduct = async (req, res) => {
-  res.send(' delete product');
-};
-const showStats = async (req, res) => {
-  res.send('show stats');
-};
+import asyncHandler from 'express-async-handler';
+import Product from '../models/Products.js';
 
-export {
-  createProduct,
-  deleteProduct,
-  getAllProducts,
-  updateProduct,
-  showStats,
-};
+//fetch all products
+//route GET/api/products
+//access Public
+const getProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({});
+  res.json(products);
+});
+
+//fetch single product
+//route GET/api/products/:id
+//access Public
+const getProductById = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  if (product) {
+    res.json(product);
+  } else {
+    res.status(404).json({ message: 'Product not found' });
+  }
+});
+
+export { getProductById, getProducts };

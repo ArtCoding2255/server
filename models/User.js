@@ -32,6 +32,7 @@ const UserSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
 //hash
 UserSchema.pre('save', async function () {
   const salt = await bcrypt.genSalt(10);

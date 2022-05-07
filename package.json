@@ -21,9 +21,11 @@
   },
   "homepage": "https://github.com/ArtCoding2255/server#readme",
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.16"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.6.2",
+    "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
