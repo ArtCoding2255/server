@@ -47,9 +47,10 @@ const OrderSchema = mongoose.Schema(
       update_time: { type: String },
       email_address: { type: String },
     },
-    paymentMethod: {
-      type: String,
+    taxPrice: {
+      type: Number,
       required: true,
+      default: 0.0,
     },
     shippingPrice: {
       type: Number,
@@ -57,11 +58,6 @@ const OrderSchema = mongoose.Schema(
       default: 0.0,
     },
     totalPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    textPrice: {
       type: Number,
       required: true,
       default: 0.0,
@@ -88,4 +84,4 @@ const OrderSchema = mongoose.Schema(
   }
 );
 
-export default OrderSchema;
+export default mongoose.model('Order', OrderSchema);

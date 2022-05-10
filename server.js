@@ -13,6 +13,7 @@ import connectDB from './db/connect.js';
 //---------------------- routers ------------------
 import authRouter from './routes/authRoutes.js';
 import productsRoutes from './routes/productsRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 //--------------------  middleware ------------------
 import errorHandlerMiddleware from './middleware/error-handler.js';
@@ -33,7 +34,8 @@ app.get('/api/v1', (req, res) => {
 });
 
 app.use('/api/products', productsRoutes);
-app.use('/api/v1/auth', authRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/orders', orderRoutes);
 // looking for request that not math current route
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

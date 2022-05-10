@@ -31,3 +31,5 @@ const ShippingSchema = mongoose.Schema({
     require: [true, 'Please provide  postCode'],
   },
 });
+
+export default mongoose.model('Shipping', ShippingSchema);
