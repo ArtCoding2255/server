@@ -1,4 +1,5 @@
 import cors from 'cors';
+import path from 'path';
 import express from 'express';
 const app = express();
 import dotenv from 'dotenv';
@@ -14,6 +15,7 @@ import connectDB from './db/connect.js';
 import authRouter from './routes/authRoutes.js';
 import productsRoutes from './routes/productsRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 
 //--------------------  middleware ------------------
 import errorHandlerMiddleware from './middleware/error-handler.js';
@@ -36,6 +38,10 @@ app.get('/api/v1', (req, res) => {
 app.use('/api/products', productsRoutes);
 app.use('/api/auth', authRouter);
 app.use('/api/orders', orderRoutes);
+app.use('/api/upload', uploadRoutes);
+
+const __dirname = path.resolve();
+app.use('/upload', express.static(path.join(__dirname, '/uploads')));
 // looking for request that not math current route
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
