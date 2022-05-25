@@ -6,7 +6,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 import 'express-async-errors';
 import morgan from 'morgan';
-import colors from 'colors';
 
 // db and authenticateUser
 import connectDB from './db/connect.js';
